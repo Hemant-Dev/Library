@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    --background-color: #111;
+    --text-color: #fff;
+    --card-background-color: lime;
+    --card-text-color: blue;
+    --font: 'Roboto', Arial, Sans-Serif;
+    --card-border-color: darkblue;
+}
+
+body {
+    text-align: center;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font);
+}
+
+/* .main-container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    justify-items: center;
+} */
+
+.book-container {
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
+    gap: 20px;
+    justify-content: center;
+    justify-items: center;
+}
+
+.card {
+    height: 200px;
+    width: 200px;
+    background-color: var(--card-background-color);
+    color: var(--card-text-color);
+    padding: 5px;
+    border: 2px solid var(--card-border-color);
+    border-radius: 20%;
+}
+                                                                    

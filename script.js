@@ -6,6 +6,8 @@ const dialog = document.querySelector('dialog');
 const closeBtn = document.querySelector('dialog button');
 const showBtn = document.querySelector('.add-card-btn');
 const submitBtn = document.querySelector('#submit-btn');
+let cardsCount = 0; //Global Var to keep track of 
+let cardsList = getCardList();
 // Test Data
 let book = new Book("Demo", "Auth", 200, true);
 let b1 = new Book("B1", "Auth1", 100, false);
@@ -25,8 +27,12 @@ showLibrary(myLibrary);
 function createCard(bookObj) {
     const card = document.createElement('div');
     addCardElements(card, bookObj);
+    cardsCount++;  //Updating Total Cards Count
     card.classList = "card";
+    card.setAttribute("data-card-index", cardsCount);
     bookContainer.insertBefore(card, addBookCard);
+    cardsList = getCardList();
+    addingEventListenersOnEachCards();
 }
 
 // Function to show the already created library
@@ -53,7 +59,7 @@ function addCardElements(card, bookObj) {
     author.textContent = bookObj.author;
     pages.textContent = "Pages: " + bookObj.noOfPages;
     status.textContent = "Read: " + bookObj.isRead;
-    delBtn.textContent = "X";
+    delBtn.textContent = "Delete";
 
     card.appendChild(title);
     card.appendChild(author);
@@ -85,3 +91,26 @@ submitBtn.addEventListener('click', (event) => {
         dialog.close();
     }
 });
+
+function removeCard(cardIndex){
+    // console.log(myLibrary);
+    myLibrary.splice(cardIndex-1, 1);
+    cardsCount--;
+    // console.log(myLibrary);
+}
+function getCardList(){
+    return Array.from(document.querySelectorAll('[data-card-index]'));
+}
+
+// Deletes any card the user clicks
+function addingEventListenersOnEachCards(){
+    // Array.from(cardsList);
+    cardsList.forEach((card) => {
+        card.lastChild.addEventListener('click', () => {
+            // console.log(card);
+            card.remove();
+            removeCard(card.getAttribute('data-card-index'));   // Removes the card obj from the library arr
+        });
+    });
+}
+

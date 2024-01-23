@@ -1,12 +1,10 @@
 import { Book, addBookToLibrary } from "./library.js";
 const myLibrary = [];  // Book Arr
 const bookContainer = document.querySelector('.book-container');
-const addBookCard = document.querySelector('.add-card');
 const dialog = document.querySelector('dialog');
 const closeBtn = document.querySelector('dialog button');
 const showBtn = document.querySelector('.add-card-btn');
 const submitBtn = document.querySelector('#submit-btn');
-let cardsCount = 0; //Global Var to keep track of 
 
 // Test Data
 // let book = new Book("Demo", "Auth", 200, true);
@@ -25,6 +23,7 @@ let cardsCount = 0; //Global Var to keep track of
 
 // Functions to create the book card
 function createCard(bookObj) {
+
     const card = document.createElement('div');
     addCardElements(card, bookObj);
     //Updating Total Cards Count
@@ -33,6 +32,7 @@ function createCard(bookObj) {
     // card.setAttribute("data-card-index", cardsCount);
     // bookContainer.insertBefore(card, addBookCard);
     bookContainer.appendChild(card);
+
 }
 
 // Function to show the already created library
@@ -66,7 +66,11 @@ function getBookFromLibrary(title){
     return myLibrary.find((book) => book.title === title);
 }
 function isInLibrary(newBook){
-    return myLibrary.some((book) => book.title === newBook.title)
+    return myLibrary.find((book) => book.title === newBook.title);
+}
+// Reset Grid
+function resetBookGrid(){
+    bookContainer.innerHTML = '';
 }
 //Function to show the book porperties in the card
 function addCardElements(card, bookObj) {
@@ -125,11 +129,3 @@ submitBtn.addEventListener('click', (event) => {
         dialog.close();
     }
 });
-
-// Reset Grid
-const deleteBtn = document.querySelector('.delete-btn');
-deleteBtn.addEventListener('click', resetBookGrid);
-
-function resetBookGrid(){
-    bookContainer.innerHTML = '';
-}

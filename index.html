@@ -13,50 +13,41 @@
 <body>
     <div class="main-container">
         <h1>My Library</h1>
+        <button class="add-card-btn">Add Book</button>
         <div class="book-container">
-            <!-- <div class="card">
-                <h3 class="book-title">Heading</h3>
-                <h4 class="book-author">Author</h4>
-                <h4 class="page-no">No of Pages: 100</h4>
-                <h4 class="status">Status: Read</h4>
-                <button class="delete-btn">X</button>
-            </div> -->
-            <div class="card add-card">
-                <button class="add-card-btn">Add Book</button>
-            </div>
-            <dialog id="add-book-dialog">
-                <h2>Add a book</h2>
-                <form>
-                    <label for="book-title">
-                        Title:
-                        <input type="text" id="book-title" name="bookTitle" required>
-                    </label>
-                    <label for="book-author">
-                        Author:
-                        <input type="text" name="bookAuthor" id="book-author" required>
-                    </label>
-                    <label for="pages">
-                        Pages:
-                        <input type="number" id="pages" name="pages" value="0">
-                    </label>
-                    <fieldset>
-                        <legend>Status:</legend>
-                            <div>
-                                <label for="status-unread">Not Read:</label>
-                                <input type="radio" name="isRead" id="status-unread" value="false" checked>
-                            </div>
-                            <div>
-                                <label for="status-read">Read:</label>
-                                <input type="radio" name="isRead" id="status-read" value="true">
-                            </div>
-                    </fieldset>
-                    <div class="btn-group">
-                        <button formmethod="dialog" id="cancel-btn">Cancel</button>
-                        <button type="submit" id="submit-btn">Submit</button>
-                    </div>
-                </form>
-            </dialog>
         </div>
+        <dialog id="add-book-dialog">
+            <h2>Add a book</h2>
+            <form>
+                <label for="book-title">
+                    Title:
+                    <input type="text" id="book-title" name="bookTitle" required>
+                </label>
+                <label for="book-author">
+                    Author:
+                    <input type="text" name="bookAuthor" id="book-author" required>
+                </label>
+                <label for="pages">
+                    Pages:
+                    <input type="number" id="pages" name="pages" value="0">
+                </label>
+                <fieldset>
+                    <legend>Status:</legend>
+                        <div>
+                            <label for="status-unread">Not Read:</label>
+                            <input type="radio" name="isRead" id="status-unread" value="false" checked>
+                        </div>
+                        <div>
+                            <label for="status-read">Read:</label>
+                            <input type="radio" name="isRead" id="status-read" value="true">
+                        </div>
+                </fieldset>
+                <div class="btn-group">
+                    <button formmethod="dialog" id="cancel-btn">Cancel</button>
+                    <button type="submit" id="submit-btn">Submit</button>
+                </div>
+            </form>
+        </dialog>
     </div>
 
 </body>

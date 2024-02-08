@@ -1,4 +1,5 @@
-import { Book, addBookToLibrary } from "./library.js";
+// import { Book, addBookToLibrary } from "./library.js";
+import { BookClass } from "./library.js";
 const myLibrary = [];  // Book Arr
 const bookContainer = document.querySelector('.book-container');
 const dialog = document.querySelector('dialog');
@@ -6,20 +7,6 @@ const closeBtn = document.querySelector('dialog button');
 const showBtn = document.querySelector('.add-card-btn');
 const submitBtn = document.querySelector('#submit-btn');
 
-// Test Data
-// let book = new Book("Demo", "Auth", 200, true);
-// let b1 = new Book("B1", "Auth1", 100, false);
-// let b2 = new Book("B2", "Auth2", 200, true);
-// let b3 = new Book("B3", "Auth3", 400, false);
-//Seeding the data
-// addBookToLibrary(b1, myLibrary);
-// addBookToLibrary(b2, myLibrary);
-// addBookToLibrary(book, myLibrary);
-// addBookToLibrary(b3, myLibrary);
-// addBookToLibrary(b3, myLibrary);
-
-//Initializing the library
-// showLibrary(myLibrary);
 
 // Functions to create the book card
 function createCard(bookObj) {
@@ -120,12 +107,13 @@ submitBtn.addEventListener('click', (event) => {
     if(title.value === '' || author.value === ''){
         alert(`Enter Required Values!`);
     }else{
-        const bookObj = new Book(title.value, author.value, pages.value, status.value);
+        // const bookObj = new Book(title.value, author.value, pages.value, status.value);
+        const bookObj = new BookClass(title.value, author.value, pages.value, status.value);
         // console.log(bookObj);
-        addBookToLibrary(bookObj, myLibrary);
+        bookObj.addBookToLibrary(bookObj, myLibrary);
         // createCard(bookObj);
         updateBooksGrid();
         console.log(myLibrary); 
         dialog.close();
-    }
+    };
 });
